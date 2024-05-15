@@ -1,7 +1,7 @@
 <h1>Summary and Assignment</h1>
 <strong>1. Purpose</strong><br>
-<i>In order to avoid hardcoding the names to be displayed when a certain face with a specific ID is recognized, we can dynamically fetch the customer names from the database based on the predicted ID. </i>i
-
+<i>In order to avoid hardcoding the names to be displayed when a certain face with a specific ID is recognized, we can dynamically fetch the customer names from the database based on the predicted ID. </i>
+<br>
 
 <strong>2. Files</strong><br>
 01_create_dataset.py<br>
