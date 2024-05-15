@@ -1,13 +1,16 @@
 <h1>Summary and Assignment</h1>
+<strong>1. Purpose</strong><br>
+<i>In order to avoid hardcoding the names to be displayed when a certain face with a specific ID is recognized, we can dynamically fetch the customer names from the database based on the predicted ID. </i>i
 
-<strong>1. Files</strong><br>
+
+<strong>2. Files</strong><br>
 01_create_dataset.py<br>
 02_create_clusters.py<br>
 03_remove_fake_faces.py<br>
 04_train_model.py<br>
 05_make_predictions.py<br>
 
-<strong>2. Details</strong><br>
+<strong>3. Details</strong><br>
 
 01_create_dataset.py
 This code captures grayscale images of a person's face using a webcam, saves them, and stores corresponding metadata (customer name, image path) in a SQLite database.
@@ -35,6 +38,6 @@ This code utilizes a pre-trained LBPH (Local Binary Patterns Histograms) face re
 
 ++++++++++++++++
 
-<strong>3. Assignment:</strong>
+<strong>4. Assignment:</strong>
 Instead of displaying the ID, fetch and display info (Full Name in this case) of the person whose face is recognized based on the predicted ID (UID) from the database.
 
