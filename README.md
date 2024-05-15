@@ -12,7 +12,7 @@
 
 <strong>3. Details</strong><br>
 
-01_create_dataset.py
+01_create_dataset.py<br>
 This code captures grayscale images of a person's face using a webcam, saves them, and stores corresponding metadata (customer name, image path) in a SQLite database.
 
 ------
@@ -37,6 +37,6 @@ This code utilizes a pre-trained LBPH (Local Binary Patterns Histograms) face re
 
 ++++++++++++++++
 
-<strong>4. Assignment:</strong>
+<strong>4. Assignment:</strong><br><br>
 Instead of displaying the ID, fetch and display info (Full Name in this case) of the person whose face is recognized based on the predicted ID (UID) from the database.
 
