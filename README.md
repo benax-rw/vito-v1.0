@@ -1,13 +1,13 @@
 <h1>Summary and Assignment</h1>
 
-<strong>Files</strong>
-01_create_dataset.py
-02_create_clusters.py
-03_remove_fake_faces.py
-04_train_model.py
-05_make_predictions.py
+<strong>Files</strong><br>
+01_create_dataset.py<br>
+02_create_clusters.py<br>
+03_remove_fake_faces.py<br>
+04_train_model.py<br>
+05_make_predictions.py<br>
 
-<strong>Details</strong>
+<strong>Details</strong><br>
 
 01_create_dataset.py
 This code captures grayscale images of a person's face using a webcam, saves them, and stores corresponding metadata (customer name, image path) in a SQLite database.
