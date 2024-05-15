@@ -1,13 +1,13 @@
-Summary and Assignment.
+<h1>Summary and Assignment</h1>
 
-Files
+<strong>Files</strong>
 01_create_dataset.py
 02_create_clusters.py
 03_remove_fake_faces.py
 04_train_model.py
 05_make_predictions.py
 
-Details
+<strong>Details</strong>
 
 01_create_dataset.py
 This code captures grayscale images of a person's face using a webcam, saves them, and stores corresponding metadata (customer name, image path) in a SQLite database.
@@ -26,6 +26,7 @@ This code clears out the 'dataset' directory, then populates it with images from
 
 04_train_model.py
 This code trains a LBPH (Local Binary Patterns Histograms) face recognizer using images from a dataset. It detects faces in images using a Haar Cascade Classifier, extracts face samples, and their corresponding labels. The LBPH recognizer is then trained with these samples. If no faces are found in the dataset, it prints a corresponding message. Finally, the trained model is saved for future use.
+
 ------
 
 05_make_predictions.py
@@ -34,6 +35,6 @@ This code utilizes a pre-trained LBPH (Local Binary Patterns Histograms) face re
 
 ++++++++++++++++
 
-Next work:
+<strong>Assignment:</strong>
 Instead of displaying the ID, fetch and display info (Full Name in this case) of the person whose face is recognized based on the predicted ID (UID) from the database.
 
