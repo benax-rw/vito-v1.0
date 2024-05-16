@@ -4,9 +4,11 @@ import sqlite3
 import os
 
 def generate_uid():
-    # Get current timestamp in milliseconds
-    uid = int(round(time.time() * 1000))
-    return uid
+    # Get current Unix timestamp in milliseconds
+    current_millis = int(time.time() * 1000)
+    # Convert to seconds by dividing by 1000
+    current_seconds = current_millis // 1000
+    return current_seconds
 
 # Initialize face cascade
 face_cascade = cv2.CascadeClassifier('models/haarcascade_frontalface_default.xml')
