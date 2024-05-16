@@ -1,4 +1,5 @@
 import cv2
+import sqlite3
 
 # Load pre-trained face recognition model
 faceRecognizer = cv2.face.LBPHFaceRecognizer_create()
@@ -13,7 +14,7 @@ fontColor = (255, 255, 255)
 fontWeight = 2
 fontBottomMargin = 30
 
-nametagColor = (255, 0, 0)
+nametagColor = (100, 180, 0)
 nametagHeight = 50
 
 faceRectangleBorderColor = nametagColor
@@ -39,19 +40,31 @@ while True:
     for (x, y, w, h) in faces:
 
         # Recognize the face
-        ID, Confidence = faceRecognizer.predict(gray[y:y + h, x:x + w])
-                      
-        # Confidence normalization to a 0-100 scale
-        Confidence = 100 - Confidence
+        customer_uid, Confidence = faceRecognizer.predict(gray[y:y + h, x:x + w])
+        # Connect to SQLite database
+        try:
+            conn = sqlite3.connect('customer_faces_data.db')
+            c = conn.cursor()
+            #print("Successfully connected to the database")
+        except sqlite3.Error as e:
+            print("SQLite error:", e)
 
-       
-        if Confidence>45:
+
+        c.execute("SELECT customer_name FROM customers WHERE customer_uid LIKE ?", (f"{customer_uid}%",))
+        row = c.fetchone()
+        if row:
+            customer_name = row[0].split(" ")[0]
+        else:
+            customer_name = "Unknown"
+
+                    
+        if 45<Confidence<100:
             # Create rectangle around the face
             cv2.rectangle(frame, (x - 20, y - 20), (x + w + 20, y + h + 20), faceRectangleBorderColor, faceRectangleBorderSize)
 
              # Display name tag
             cv2.rectangle(frame, (x - 22, y - nametagHeight), (x + w + 22, y - 22), nametagColor, -1)
-            cv2.putText(frame, str(ID) + ": " + str(round(Confidence, 2)) + "%", (x, y-fontBottomMargin), fontFace, fontScale, fontColor, fontWeight)
+            cv2.putText(frame, str(customer_name) + ": " + str(round(Confidence, 2)) + "%", (x, y-fontBottomMargin), fontFace, fontScale, fontColor, fontWeight)
 
     # Display the resulting frame
     cv2.imshow('Detecting Faces...', frame)
@@ -63,3 +76,6 @@ while True:
 # Release the camera and close all OpenCV windows
 camera.release()
 cv2.destroyAllWindows()
+
+# Close the database connection
+conn.close()
