@@ -22,7 +22,7 @@ This code seems to be automating the process of organizing images into clusters 
 
 ------
 
-03_remove_fake_faces.py<br>
+03_rearrange_data.py<br>
 This code clears out the 'dataset' directory, then populates it with images from 'dataset-clusters'. After that, it removes 'dataset-clusters'. Finally, it checks the SQLite database for records whose associated images are not in the 'dataset' folder, deletes those records, and prints a message for each deletion. This process ensures data integrity and cleanliness in the dataset.
 
 ------
