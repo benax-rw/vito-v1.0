@@ -6,7 +6,7 @@
 <strong>2. Files</strong><br>
 01_create_dataset.py<br>
 02_create_clusters.py<br>
-03_remove_fake_faces.py<br>
+03_rearrange_data.py<br>
 04_train_model.py<br>
 05_make_predictions.py<br>
 
