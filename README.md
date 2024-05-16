@@ -37,6 +37,20 @@ This code utilizes a pre-trained LBPH (Local Binary Patterns Histograms) face re
 
 ++++++++++++++++
 
-<strong>4. Assignment:</strong><br><br>
+<strong>4. Assignment (corrected)</strong><br><br>
 Instead of displaying the ID, fetch and display info (Full Name in this case) of the person whose face is recognized based on the predicted ID (UID) from the database.
+
+++++++++++++++++
+
+<strong>5. Querying SQLite DB</strong><br><br>
+Assuming SQLite3 is installed,
+start by typing the command 'sqlite3 customer_faces_data.db'.
+You'll then get a prompt
+sqlite>
+
+Go ahead and type commands like 
+pragma table_info (customers);
+select * from customers;
+...
+
 
