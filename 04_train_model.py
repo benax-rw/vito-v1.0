@@ -1,24 +1,25 @@
 import cv2
 import os
 import numpy as np
-from PIL import Image
 
 # Load the Haar Cascade Classifier for face detection
 detector = cv2.CascadeClassifier("models/haarcascade_frontalface_default.xml")
 
-def getImagesAndLabels(path):
+def getImagesAndLabels(path, target_size=(100, 100)):
     imagePaths = [os.path.join(path, f) for f in os.listdir(path) if not f.startswith('.')]
     faceSamples = []
     Ids = []
     for imagePath in imagePaths:
         try:
-            pilImage = Image.open(imagePath).convert('L')
-            imageNp = np.array(pilImage, 'uint8')
-            Id = int(os.path.split(imagePath)[-1].split(".")[1])
-            faces = detector.detectMultiScale(imageNp)
+            image = cv2.imread(imagePath, cv2.IMREAD_GRAYSCALE)  # Read image in grayscale
+            image = cv2.resize(image, target_size)  # Resize image to target size
+            filename = os.path.basename(imagePath)
+            customer_id = int(filename.split("_")[0].split(".")[1])  # Extract customer ID
+            faces = detector.detectMultiScale(image)
             for (x, y, w, h) in faces:
-                faceSamples.append(imageNp[y:y + h, x:x + w])
-                Ids.append(Id)
+                face = image[y:y + h, x:x + w]
+                faceSamples.append(face)
+                Ids.append(customer_id)
         except Exception as e:
             print(f"Error processing image {imagePath}: {e}")
     return faceSamples, Ids
